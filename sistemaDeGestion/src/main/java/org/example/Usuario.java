@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class Usuario {
     private String nombre;
+    @Builder.Default
     private List<Prestamo> historialPrestamos = new ArrayList<>();
 
     public void agregarPrestamo(Prestamo prestamo) {
