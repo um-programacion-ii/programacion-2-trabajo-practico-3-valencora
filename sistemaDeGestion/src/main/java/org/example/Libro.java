@@ -15,6 +15,7 @@ public class Libro {
     private String isbn;
     private String titulo;
     private String autor;
+    @Builder.Default
     private Estado estado = Estado.DISPONIBLE;
 
 

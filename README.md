@@ -11,9 +11,93 @@
 - **Recomendación:** Se sugiere leer la consigna completa antes de comenzar con el desarrollo para tener una visión general del proyecto y planificar adecuadamente el trabajo.
 
 ## Identificación del Alumno
-- **Nombre:** [Nombre del Alumno]
-- **Apellido:** [Apellido del Alumno]
-- **Legajo:** [Número de Legajo]
+- **Nombre:** Valentin
+- **Apellido:** Coratolo
+- **Legajo:** 62084
+
+# Sistema de Préstamos de Biblioteca con Lombok y Mocks
+
+## Documentación del Sistema
+
+### 1. Descripción general de la arquitectura
+Este sistema gestiona una biblioteca digital simple, aplicando principios de bajo acoplamiento, orientación a objetos, uso de mocks para pruebas y generación de código automático con Lombok.
+
+- **Modelo:**
+  - `Libro`, `Prestamo`, `Usuario`
+- **Servicios / Lógica de negocio:**
+  - `Catalogo`: registros y búsquedas de libros.
+  - `SistemaPrestamos`: maneja los préstamos.
+  - `GestionUsuarios`: usuarios y sus préstamos.
+- **Pruebas Unitarias:**
+  - `JUnit 5` y `Mockito` para pruebas con mocks.
+- **Utilidades:**
+  - `Lombok` para eliminar getters, setters y constructores repetitivos.
+
+### 2. Explicación de los componentes principales
+
+| Componente             | Responsabilidad                                                      |
+|------------------------|----------------------------------------------------------------------|
+| `Libro`                | Representa un libro, con ISBN, título, autor y estado.               |
+| `Catalogo`             | Agrega, busca libros y lista disponibles.                            |
+| `Prestamo`             | Representa un préstamo con libro y fecha.                            |
+| `SistemaPrestamos`     | Verifica disponibilidad y genera préstamos.                          |
+| `Usuario`              | Tiene nombre y un historial de préstamos.                            |
+| `GestionUsuarios`      | Registra usuarios y sus préstamos.                                   |
+| `Tests`                | Validan todos los flujos con mocks de dependencias.                  |
+
+### 3. Flujo de trabajo del sistema
+
+1. `Catalogo` permite agregar libros y consultarlos por ISBN o disponibilidad.
+2. `SistemaPrestamos` se encarga de cambiar el estado del libro y generar un objeto `Prestamo`.
+3. `Usuario` guarda un historial de sus préstamos.
+4. `GestionUsuarios` coordina préstamos entre usuarios y libros a través del `SistemaPrestamos`.
+
+---
+
+## Cómo ponerlo en funcionamiento
+
+### Requisitos previos
+- **JDK 21** instalado
+- **Maven 3.8+**
+
+### Compilación y pruebas
+
+```bash
+git clone git@github.com:um-programacion-ii/programacion-2-trabajo-practico-3-valencora.git
+cd programacion-2-trabajo-practico-3-valencora/sistemaDeGestion
+mvn test
+```
+## Pruebas de funcionalidades
+
+### 1. Prueba de Libro
+- Crear libros con `builder()`.
+- Validar getters.
+- Cambiar estado `DISPONIBLE` / `PRESTADO`.
+
+### 2. Prueba de Catalogo
+- Agregar libros al catálogo.
+- Buscar por ISBN.
+- Listar libros disponibles.
+
+### 3. Prueba de SistemaPrestamos
+- Mockear `Catalogo`, simular libros DISPONIBLES y PRESTADOS.
+- Verificar que el estado cambia y se retorna un `Prestamo`.
+
+### 4. Prueba de GestionUsuarios
+- Mockear `SistemaPrestamos` y `Catalogo`.
+- Registrar un usuario.
+- Asignar préstamo y verificar historial.
+
+## Tecnologías utilizadas
+- Java 21
+- Maven
+- Lombok (`@Getter`, `@Setter`, `@Builder`, etc.)
+- JUnit 5 para pruebas
+- Mockito para mocks
+
+## Evidencia de que las pruebas pasan correctamente 
+
+![Evidencia de tests exitosos](tests.png)
 
 ## Importante
 - La rama `main` está protegida y no se pueden hacer commits directos sobre ella
