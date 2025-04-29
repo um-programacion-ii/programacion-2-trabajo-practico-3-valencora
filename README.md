@@ -66,7 +66,7 @@ Este sistema gestiona una biblioteca digital simple, aplicando principios de baj
 git clone git@github.com:um-programacion-ii/programacion-2-trabajo-practico-3-valencora.git
 cd programacion-2-trabajo-practico-3-valencora/sistemaDeGestion
 mvn test
-
+```
 ## Pruebas de funcionalidades
 
 ### 1. Prueba de Libro
